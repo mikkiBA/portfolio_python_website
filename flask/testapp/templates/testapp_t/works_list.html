@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="margin">
+    <h3 class="ttl_frame">作品一覧</h3>
+    <form method="POST" action="{{ url_for('works_list')}}">
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">作品名</th>
+                <th scope="col">詳細</th>
+                <th scope="col">URL</th>
+                <th scope="col">登録日時</th>
+                <th scope="col">更新日時</th>
+              </tr>
+            </thead>
+            <tbody>
+                <!-- query.allで取ってきたdbの全データをworksに渡して、html側に持ってくる、それをfor workで回す -->
+                {% for work in works %}
+                <tr>
+                    <th scope="row">{{ work.id }}</th>
+                    <td>{{ work.name }}</td>
+                    <td>{{ work.description }}</td>
+                    <td>
+                        <a href="{{ work.url_link }}">{{ work.url_link}}</a>
+                    </td>
+                    <td>{{ work.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ work.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+
+                    <td>
+                        <a class="btn btn-outline-primary" href="{{ url_for('works_edit', id=work.id) }}" role="button">編集</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger" href="{{ url_for('works_delete', id=work.id) }}" role="button">削除</a>
+                    </td>
+                </tr>
+          {% endfor %}
+            </tbody>
+          </table>
+
+          <body>
+            <a class="btn btn-primary" href="{{url_for('works_add')}}" roke="button">作品追加</a>
+          </body>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<body>
+<div class="container">
+<h4>{{ title }}</h4>
+<br>
+    <h5>送信内容</h5>
+    <p>お名前： {{ result.contact_name }}</p>
+    <p>ご連絡先メールアドレス： {{ result.contact_email }}</p>
+    <p>お問い合わせ内容： {{ result.contact_message }}</p>
+
+    <p>
+        <a href="{{ url_for('contact') }}">戻る</a>
+    </p>
+</body>
+
+{% endblock %}

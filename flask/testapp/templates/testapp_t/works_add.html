@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h3>作品追加ページ</h3>
+    <form method="POST" action="{{ url_for('works_add')}}">
+        {{ work_form.hidden_tag() }}
+
+        <table class="table">
+            <p>
+                {{ work_form.name.label }}<br>
+                {{ work_form.name() }}<br>
+                {% for error in work_form.name.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %} 
+            </p>
+        
+            <p>
+                {{ work_form.description.label }}<br>
+                {{ work_form.description() }}<br>
+                {% for error in work_form.description.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ work_form.url_link.label }}<br>
+                {{ work_form.url_link() }}<br>
+                {% for error in work_form.url_link.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+        </table>
+    
+        {{  work_form.submit()  }}
+    
+        </form>
+        <br>
+        <p>
+            <a href="{{ url_for('works_list') }}">戻る</a>
+        </p>
+        <br>
+</div>
+{% endblock %}

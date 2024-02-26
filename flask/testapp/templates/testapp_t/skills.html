@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="margin">
+    <h3 class="ttl_frame">スキル紹介</h3>
+    <h4>言語</h4>
+        <ul>
+        {% for element in my_dict.languages %}
+            <li>{{ element }}</li>
+        {% endfor %}
+        </ul>
+
+    <h4>ツール</h4>
+        <ul>
+            {% for element in my_dict.tools %}
+            <li>{{ element }}</li>
+            {% endfor %}
+        </ul>
+
+    <h4>データベース</h4>
+        <ul>
+            {% for element in my_dict.database %}
+            <li>{{ element }}</li>
+            {% endfor %}
+        </ul>
+</div>
+{% endblock %}

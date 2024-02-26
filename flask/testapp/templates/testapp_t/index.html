@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="margin">
+    <h3 class="ttl_frame">自己紹介</h3>
+    <h4>概要</h4>
+        <h5>
+            <ruby>
+                {{ my_name }}
+                <rt>{{ my_furigana }}</rt>
+            </ruby>
+        </h5>
+
+
+    <ul>
+        {% for element in my_dict.prof_outline %}
+            <li>{{ element }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>興味関心</h4>
+    <ul>
+        {% for element in my_dict.prof_likes %}
+            <li>{{ element }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<script src="{{ url_for('static', filename='javascript/sample.js') }}"></script>
+{% endblock %}

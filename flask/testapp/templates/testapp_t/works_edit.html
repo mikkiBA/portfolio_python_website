@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>作品一覧編集</h3>
+    <form action="{{ url_for('works_update', id=works.id) }}" method="POST">
+
+        <label for="name">#:</label>
+            {{ works.id }}
+
+        <label for="name">作品名</label>
+        <input name="name" value="{{ works.name }}"></input>
+
+        <label for="description">作品詳細</label>
+        <input name="description" value="{{ works.description }}"></input>
+
+        <label for="url_link">作品URL</label>
+        <input name="url_link" value="{{ works.url_link }}"></input>
+
+        <button type="submit" class="btn btn-primary">情報更新</button>
+    </form>
+</div>
+{% endblock %}

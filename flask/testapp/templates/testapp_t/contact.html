@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<body>
+<div class="margin">
+    <h3 class="ttl_frame">問い合わせ</h3>
+
+    <h4>{{ title }}</h4>
+    <form method="POST" action="{{ url_for('contact')}}">
+        {{ contact_form.hidden_tag() }}
+
+    <table class="table">
+        <p>
+            {{ contact_form.user_name.label }}<br>
+            {{ contact_form.user_name() }}<br>
+            {% for error in contact_form.user_name.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}     
+        </p>
+
+        <p>
+            {{ contact_form.email.label }}<br>
+            {{ contact_form.email() }}<br>
+            {% for error in contact_form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ contact_form.message.label }}<br>
+            {{ contact_form.message() }}<br>
+            {% for error in contact_form.message.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+    </table>
+
+    {{  contact_form.submit()  }}
+
+    </form>
+</div>
+</body>
+
+{% endblock %}
